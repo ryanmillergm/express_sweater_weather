@@ -5,5 +5,5 @@
 
 ### Installation
 - To install, clone this repository:
-```https://github.com/ryanmillergm/express_sweater_weather.git```
+```git clone https://github.com/ryanmillergm/express_sweater_weather.git```
 
