@@ -2,6 +2,7 @@ let mongoose = require('mongoose'),
   Schema = mongoose.Schema,
   bcrypt = require('bcrypt'),
   SALT_WORK_FACTOR = 10
+var hat = require('hat');
 
 let UserSchema = new Schema({
   email: {
@@ -36,6 +37,7 @@ bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
 
         // override the cleartext password with the hashed one
         user.password = hash;
+        user.api_key = hat();
         next();
     });
 });
