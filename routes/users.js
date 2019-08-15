@@ -26,7 +26,9 @@ router.post('/', (req, res, next) => {
       if(!doc || doc.length === 0) {
         return res.status(500).send(doc)
       }
-      res.status(201).send(doc)
+      res.status(201).send({
+        "api_key": `${doc.api_key}`
+        })
     })
     .catch(err => {
       res.status(500).json(err)
