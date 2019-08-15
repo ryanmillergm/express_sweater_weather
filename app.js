@@ -3,11 +3,23 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const mongoose = require('mongoose')
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+
+const MONGO_USERNAME = process.env.MONGO_USERNAME
+const MONGO_PASSWORD = process.env.MONGO_PASSWORD
+const MONGOURL = `mongodb+srv://${MONGO_USERNAME}:${MONGO_PASSWORD}@express-practice-ll9xu.mongodb.net/test?retryWrites=true&w=majority`
+
+mongoose.connect(MONGOURL)
+  .then(() => console.log("DB connected"))
+  .catch(error => console.log(error));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
