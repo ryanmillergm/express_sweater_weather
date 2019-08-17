@@ -21,11 +21,14 @@ router.post('/', (req, res) => {
               return res.status(500).send(doc)
             }
           })
-        console.log(req.body.location)
-        console.log(user.favorites)
         user.favorites.push(location);
+        user.save()
         res.setHeader("Content-Type", "application/json");
-        res.status(200).send(JSON.stringify(user));
+        res.status(200).send(JSON.stringify(
+          {
+            "message": `${location.location} has been added to your favorites`,
+          }
+        ));
       } else {
         res.setHeader("Content-Type", "application/json");
         res.status(401).send("Sorry, you do no have authorization.")
