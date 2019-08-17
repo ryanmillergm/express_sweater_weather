@@ -5,6 +5,7 @@ const mongoose = require('mongoose'),
 var hat = require('hat');
 
 const UserSchema = new Schema({
+  _id: Schema.Types.ObjectId,
   email: {
     type: String,
     required: true,
@@ -44,7 +45,7 @@ bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
         user.api_key = hat();
         next();
     });
-});
+  });
 });
 
 

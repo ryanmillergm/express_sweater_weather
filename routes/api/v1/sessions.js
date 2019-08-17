@@ -1,4 +1,4 @@
-let UserModel = require('../../../models/user.model');
+var UserModel = require('../../../models/user.model');
 var express = require('express');
 var router = express.Router();
 var bcrypt = require('bcrypt')
