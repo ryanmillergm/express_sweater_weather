@@ -3,8 +3,8 @@ if (process.env.NODE_ENV !== 'production') {
 }
 var express = require('express');
 var router = express.Router();
-let UserModel = require('../../../models/user.model');
 
+const UserModel = require('../../../models/user.model');
 const dotenv = require('dotenv').config()
 const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY
 const DARKSKY_API_KEY = process.env.DARKSKY_API_KEY
@@ -108,7 +108,7 @@ router.get('/', (req, res) => {
         })
     } else {
       res.setHeader("Content-Type", "application/json");
-      res.status(500).send("Sorry, you do no have authorization.")
+      res.status(401).send("Sorry, you do no have authorization.")
     }
   })
 })

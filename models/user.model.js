@@ -1,10 +1,10 @@
-let mongoose = require('mongoose'),
+const mongoose = require('mongoose'),
   Schema = mongoose.Schema,
   bcrypt = require('bcrypt'),
   SALT_WORK_FACTOR = 10
 var hat = require('hat');
 
-let UserSchema = new Schema({
+const UserSchema = new Schema({
   email: {
     type: String,
     required: true,
@@ -18,7 +18,11 @@ let UserSchema = new Schema({
   },
   api_key: {
     type: String
-  }
+  },
+  favorites: [{
+    type: Schema.Types.ObjectId,
+    ref: 'favorite'
+  }]
 });
 
 UserSchema.pre('save', function(next) {
